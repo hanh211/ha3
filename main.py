@@ -1,4 +1,5 @@
 import kivy
+import lovecal
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.camera import Camera
@@ -28,7 +29,8 @@ class KivyCamera(Image):
 
 class MainApp(App):
     def build(self):
-        self.capture = cv2.VideoCapture("rtsp://admin:admin1234@192.168,1,15:554/cam/realmonitor?channel=1&subtype=0")
+        self.icon = 'images/appicon.png'
+        self.capture = cv2.VideoCapture("rtsp://admin:admin1234@192.168.1.15:554/cam/realmonitor?channel=1&subtype=0")
         self.camera = KivyCamera(capture=self.capture, fps=30)
         return self.camera
 
