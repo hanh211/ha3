@@ -99,7 +99,8 @@ class MainApp(App):
     classesPath=os.path.join("model_data","coco.names")
     def build(self):
         self.icon = 'images/appicon.png'
-        self.capture = cv2.VideoCapture("rtsp://admin:admin1234@192.168.1.15:554/cam/realmonitor?channel=1&subtype=0")
+        self.capture = cv2.VideoCapture("rtsp://admin:admin1234@ngduchanh2.ddns.net:554/cam/realmonitor?channel=1&subtype=0")
+        # self.capture = cv2.VideoCapture("rtsp://admin:admin1234@192.168.1.15:554/cam/realmonitor?channel=1&subtype=0")
         self.camera = KivyCamera(capture=self.capture,modelPath=self.modelPath,configPath=self.configPath,classesPath=self.classesPath,fps=30)
         return self.camera
 
