@@ -1,20 +1,19 @@
-var express=require("express")
-var app=express();
-app.use(express.static("public"));
-var server=require("http").Server(app);
-const http=require('http');
-const fs=require('fs');
-http.createServer(function(req,res){
-  fs.readFile('index.html',function(err,data){
-    res.writeHead(200,{
-      'Content-Type':'text/html',
-      'Content-Length':data.length,
-    });
-    res.write(data);
-    res.end();
-  });
-}).listen(process.env.PORT || 3000);
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = 3000;
 
-app.get("/ap",function(req,res){
-  console.log("hello");
+app.get('/api', (req, res) => {
+  res.json(`HTTP GET request received`);
+})
+
+app.use(express.static(path.join(__dirname, 'docs')));
+
+app.use(function(req, res) {
+  res.status(400);
+  return res.send(`404 Error: Resource not found`);
 });
+
+app.listen(port, () => {
+  console.log(`App listening  on port ${port}`);
+})
